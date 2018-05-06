@@ -1,0 +1,18 @@
+﻿<Window x:Class="AlertWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AlertWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+          Background="Transparent" AllowsTransparency="True"  WindowStyle="None" WindowState="Minimized"
+        Topmost="True"
+        >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="LabelAlert" Content="Alert" FontSize="72" Grid.ColumnSpan="2" Foreground="#FFFF38C0" FontFamily="Snap ITC" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </Grid>
+</Window>
