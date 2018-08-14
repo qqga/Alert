@@ -13,6 +13,6 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Label x:Name="LabelAlert" Content="Alert" FontSize="72" Grid.ColumnSpan="2" Foreground="#FFFF38C0" FontFamily="Snap ITC" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock  x:Name="AlertTextBlock" Text="Alert" FontSize="72" Grid.ColumnSpan="2" Foreground="#FFFF38C0" FontFamily="Snap ITC" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center"/>
     </Grid>
 </Window>

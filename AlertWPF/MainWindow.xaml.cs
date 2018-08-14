@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CommandLine;
+using CommandLine.Text;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,19 +27,31 @@ namespace AlertWPF
         {
             InitializeComponent();
 
-            AlertUtil.Alert(msg =>
-            {
-                if (string.IsNullOrEmpty(msg))
-                    Shutdown();
-                else
-                {
-                    this.WindowState = WindowState.Maximized;
-                    LabelAlert.MouseDown += delegate { Shutdown(); };
-                    LabelAlert.Content = msg;
-                }
+            var args = Environment.GetCommandLineArgs().Skip(1);
+
+            var parceRes = CommandLine.Parser.Default.ParseArguments<CmdArgs>(args)
+                .WithParsed(opts => AlertUtil.Alert(opts, () => ShowMessage(opts.AlertMessage)));
+            
+            parceRes.WithNotParsed(errs => {
+
+                HelpText autoBuild = CommandLine.Text.HelpText.AutoBuild(parceRes);
+                AlertTextBlock.FontSize = 26;
+                ShowMessage(autoBuild.ToString());
+
             });
+            //if(parceRes is NotParsed<CmdArgs>)
+            
+        }
+
+
+        void ShowMessage(string message)
+        {
+            this.WindowState = WindowState.Maximized;
+            AlertTextBlock.MouseDown += delegate { Shutdown(); };
+            AlertTextBlock.Text = message;
         }
 
         void Shutdown() => Application.Current.Shutdown();
+
     }
 }
